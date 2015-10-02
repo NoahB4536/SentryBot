@@ -4,8 +4,9 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class UltrasonicSensorArray {
+public class UltrasonicSensorArray extends Subsystem {
 	
 	Ultrasonic ultrasonic1;
 	Servo servo;
@@ -14,6 +15,10 @@ public class UltrasonicSensorArray {
 		
 		ultrasonic1 = new Ultrasonic(ultrasonicOut, ultrasonicIn);
 		servo = new Servo(servoChannel);
+		
+	}
+	
+	public void initDefaultCommand() {
 		
 	}
 	

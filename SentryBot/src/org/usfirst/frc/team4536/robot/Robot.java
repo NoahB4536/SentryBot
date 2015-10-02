@@ -23,6 +23,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command drive;
     Command strafeDrive;
+    Command runRadar;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new ExampleCommand();
         drive = new Drive();
         strafeDrive = new StrafeDrive();
+        runRadar = new Radar();
     }
 	
 	public void disabledPeriodic() {
@@ -60,7 +62,9 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+    	
+    	runRadar.cancel();
+    	
     }
 
     /**
@@ -77,6 +81,9 @@ public class Robot extends IterativeRobot {
         	if (strafeDrive != null) strafeDrive.cancel();
         	drive.start();
         }
+        
+        runRadar.start();
+        
     }
     
     /**

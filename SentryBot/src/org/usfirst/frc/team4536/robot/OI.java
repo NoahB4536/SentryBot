@@ -13,16 +13,12 @@ import org.usfirst.frc.team4536.robot.commands.*;
 public class OI {
 	
 	public static boolean strafing;
-    
-	public static Button strafe;
 	
 	public static Joystick mainStick;
 	
 	public OI() {
 		
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
-		
-		strafe = new JoystickButton(mainStick, 2);
 		
 		strafing = mainStick.getRawButton(2);
 		

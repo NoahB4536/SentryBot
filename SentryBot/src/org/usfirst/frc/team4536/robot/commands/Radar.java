@@ -6,4 +6,14 @@ public class Radar extends CommandBase {
 		requires(radar);
 	}
 	
+	public void initialize() {
+		
+	}
+	
+	public void execute() {
+		
+		radar.Start();
+		
+	}
+	
 }
