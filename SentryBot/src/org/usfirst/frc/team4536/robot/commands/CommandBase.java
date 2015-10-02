@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CommandBase extends Command{
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FRONT_MOTOR, RobotMap.RIGHT_FRONT_MOTOR, RobotMap.LEFT_BACK_MOTOR, RobotMap.RIGHT_BACK_MOTOR);
-	public static UltrasonicSensorArray radar = new UltrasonicSensorArray(RobotMap.ULTRASONIC_IN, RobotMap.ULTRASONIC_OUT, RobotMap.SERVO_PWN_CHANNEL);
+	public static UltrasonicSensorArray radar = new UltrasonicSensorArray(RobotMap.ULTRASONIC_IN, RobotMap.SERVO_PWN_CHANNEL);
 	
 	public CommandBase() {
     }

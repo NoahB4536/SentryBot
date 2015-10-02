@@ -13,6 +13,7 @@ public class Radar extends CommandBase {
 	public void execute() {
 		
 		radar.Start();
+		System.out.println(radar.ReturnDistances());
 		
 	}
 	

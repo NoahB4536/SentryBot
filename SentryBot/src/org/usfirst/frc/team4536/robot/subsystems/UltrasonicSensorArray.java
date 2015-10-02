@@ -1,5 +1,9 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
+
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -8,12 +12,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class UltrasonicSensorArray extends Subsystem {
 	
-	Ultrasonic ultrasonic1;
+	AnalogInput rangefinder;
 	Servo servo;
 	
-	public UltrasonicSensorArray(int ultrasonicIn, int ultrasonicOut, int servoChannel) {
+	public TableModel radarTable;
+	
+	public UltrasonicSensorArray(int analogIn, int servoChannel) {
 		
-		ultrasonic1 = new Ultrasonic(ultrasonicOut, ultrasonicIn);
+		rangefinder = new AnalogInput(analogIn);
 		servo = new Servo(servoChannel);
 		
 	}
@@ -23,20 +29,16 @@ public class UltrasonicSensorArray extends Subsystem {
 	}
 	
 	public void Start() {
-		ultrasonic1.setEnabled(true);
 		servo.setPosition(.5);
 	}
 	
 	public void Stop() {
-		ultrasonic1.setEnabled(false);
 		servo.setPosition(.5);
 	}
 	
 	public double ReturnDistances() {
-		double distance1;
-		distance1 = ultrasonic1.getRangeInches();
+		double distance1 = rangefinder.getValue();
 		return distance1;
-		
 	}
 	
 }
