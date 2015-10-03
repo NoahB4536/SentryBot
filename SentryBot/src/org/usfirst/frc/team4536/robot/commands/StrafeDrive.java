@@ -10,7 +10,7 @@ public class StrafeDrive extends CommandBase {
 private static double forwardThrottle, strafeThrottle;
 	
 	public StrafeDrive() {
-		requires(driveTrain);
+		//requires(driveTrain);
 	}
 	
 	public void initialize() {
@@ -30,8 +30,12 @@ private static double forwardThrottle, strafeThrottle;
     	double leftBackTalonThrottle = forwardThrottle + strafeThrottle;
     	double rightBackTalonThrottle = forwardThrottle - strafeThrottle;
     	
-    	driveTrain.Drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
+    	//driveTrain.Drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
     	
 	}
+	
+	protected void interrupted() {
+		end();
+    }
 	
 }

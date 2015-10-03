@@ -3,6 +3,8 @@ package org.usfirst.frc.team4536.robot.subsystems;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
+import org.usfirst.frc.team4536.robot.Constants;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.DigitalOutput;
@@ -37,7 +39,7 @@ public class UltrasonicSensorArray extends Subsystem {
 	}
 	
 	public double ReturnDistances() {
-		double distance1 = rangefinder.getValue();
+		double distance1 = rangefinder.getValue() / Constants.ANALOG_TO_FEET;
 		return distance1;
 	}
 	

@@ -4,10 +4,11 @@ import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.subsystems.*;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class CommandBase extends Command{
+public abstract class CommandBase extends Command{
 	
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FRONT_MOTOR, RobotMap.RIGHT_FRONT_MOTOR, RobotMap.LEFT_BACK_MOTOR, RobotMap.RIGHT_BACK_MOTOR);
+	//public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FRONT_MOTOR, RobotMap.RIGHT_FRONT_MOTOR, RobotMap.LEFT_BACK_MOTOR, RobotMap.RIGHT_BACK_MOTOR);
 	public static UltrasonicSensorArray radar = new UltrasonicSensorArray(RobotMap.ULTRASONIC_IN, RobotMap.SERVO_PWN_CHANNEL);
+	public static SixWheelDriveTrain sixWheelDriveTrain = new SixWheelDriveTrain(RobotMap.ARCADE_LEFT, RobotMap.ARCADE_RIGHT);
 	
 	public CommandBase() {
     }

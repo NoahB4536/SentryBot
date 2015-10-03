@@ -24,6 +24,8 @@ public class Robot extends IterativeRobot {
     Command drive;
     Command strafeDrive;
     Command runRadar;
+    Command arcadeDrive;
+    Command driveUntilObject;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -35,6 +37,8 @@ public class Robot extends IterativeRobot {
         drive = new Drive();
         strafeDrive = new StrafeDrive();
         runRadar = new Radar();
+        arcadeDrive = new ArcadeDrive();
+        driveUntilObject = new DriveUntilObject();
     }
 	
 	public void disabledPeriodic() {
@@ -55,6 +59,8 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        driveUntilObject.start();
     }
 
     /**
@@ -63,7 +69,11 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
-    	runRadar.cancel();
+    	//runRadar.cancel();
+    	
+    	//arcadeDrive.cancel();
+    	
+    	driveUntilObject.cancel();
     	
     }
 
@@ -73,16 +83,18 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        if (OI.strafing == true) {
-        	if (drive != null) drive.cancel();
-        	strafeDrive.start();
-        }
-        else {
-        	if (strafeDrive != null) strafeDrive.cancel();
-        	drive.start();
-        }
+        //if (OI.strafing == true) {
+        	//if (drive != null) drive.cancel();
+        	//strafeDrive.start();
+        //}
+        //else {
+        	//if (strafeDrive != null) strafeDrive.cancel();
+        	//drive.start();
+        //}
         
-        runRadar.start();
+        //arcadeDrive.start();
+        
+        //runRadar.start();
         
     }
     

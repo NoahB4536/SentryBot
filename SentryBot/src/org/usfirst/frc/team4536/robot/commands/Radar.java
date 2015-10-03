@@ -13,8 +13,12 @@ public class Radar extends CommandBase {
 	public void execute() {
 		
 		radar.Start();
-		System.out.println(radar.ReturnDistances() * 8);
+		System.out.println(radar.ReturnDistances());
 		
 	}
+	
+	protected void interrupted() {
+		end();
+    }
 	
 }

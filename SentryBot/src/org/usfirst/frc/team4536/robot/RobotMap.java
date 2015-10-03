@@ -13,10 +13,13 @@ public class RobotMap {
     public static final int LEFT_BACK_MOTOR = 2;
     public static final int RIGHT_BACK_MOTOR = 3;
     
+    public static final int ARCADE_LEFT = 0;
+    public static final int ARCADE_RIGHT = 1;
+    
     public static final int MAIN_STICK = 0;
     
     public static final int SERVO_PWN_CHANNEL = 6;
     
-    public static final int ULTRASONIC_IN = 0;
+    public static final int ULTRASONIC_IN = 2;
     
 }

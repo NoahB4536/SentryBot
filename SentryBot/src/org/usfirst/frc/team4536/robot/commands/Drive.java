@@ -9,7 +9,7 @@ public class Drive extends CommandBase {
 	private static double forwardThrottle, strafeThrottle;
 	
 	public Drive() {
-		requires(driveTrain);
+		//requires(driveTrain);
 	}
 	
 	public void initialize() {
@@ -20,8 +20,6 @@ public class Drive extends CommandBase {
 	}
 	
 	protected void execute() {
-		
-		
 		
 		forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
     	strafeThrottle = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
@@ -35,7 +33,11 @@ public class Drive extends CommandBase {
     	double leftBackTalonThrottle = forwardThrottle - strafeThrottle;
     	double rightBackTalonThrottle = forwardThrottle + strafeThrottle;
     	
-    	driveTrain.Drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
+    	//driveTrain.Drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
     	
 	}
+	
+	protected void interrupted() {
+		end();
+    }
 }
