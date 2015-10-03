@@ -102,6 +102,10 @@ public class Robot extends IterativeRobot {
         
         //runRadar.start();
         
+        if (roam == null) {
+        	roam.start();
+        }
+        
     }
     
     /**
