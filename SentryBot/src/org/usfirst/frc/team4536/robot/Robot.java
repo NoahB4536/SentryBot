@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
     Command runRadar;
     Command arcadeDrive;
     Command driveUntilObject;
+    Command roam;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
         runRadar = new Radar();
         arcadeDrive = new ArcadeDrive();
         driveUntilObject = new DriveUntilObject();
+        roam = new Roam();
     }
 	
 	public void disabledPeriodic() {
@@ -60,7 +62,9 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();
         
-        driveUntilObject.start();
+        roam.start();
+        
+        //driveUntilObject.start();
     }
 
     /**
@@ -73,7 +77,9 @@ public class Robot extends IterativeRobot {
     	
     	//arcadeDrive.cancel();
     	
-    	driveUntilObject.cancel();
+    	//driveUntilObject.cancel();
+    	
+    	roam.cancel();
     	
     }
 

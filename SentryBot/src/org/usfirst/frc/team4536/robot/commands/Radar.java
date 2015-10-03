@@ -10,6 +10,10 @@ public class Radar extends CommandBase {
 		
 	}
 	
+	/**
+	 * @author Noah
+	 * Prints the distance value from the ultrasonic to the Riolog
+	 */
 	public void execute() {
 		
 		radar.Start();

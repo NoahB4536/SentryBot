@@ -20,6 +20,10 @@ private static double forwardThrottle, strafeThrottle;
 		
 	}
 	
+	/**
+	 * @author Noah
+	 * Drives only left or right
+	 */
 	protected void execute() {
 		
 		forwardThrottle = 0;

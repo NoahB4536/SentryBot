@@ -19,6 +19,10 @@ public class Drive extends CommandBase {
 		
 	}
 	
+	/**
+	 * @author Noah
+	 * Drives mecanum drive with one joystick (like arcade) 
+	 */
 	protected void execute() {
 		
 		forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);

@@ -1,12 +1,10 @@
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.commands.*;
-
-public class DriveUntilObject extends CommandBase {
+public class TurnIfBlocked extends CommandBase {
 	
-	private static double forwardThrottle, turnThrottle;
+private static double forwardThrottle, turnThrottle;
 	
-	public DriveUntilObject() {
+	public TurnIfBlocked() {
 		requires(sixWheelDriveTrain);
 		requires(radar);
 	}
@@ -20,19 +18,19 @@ public class DriveUntilObject extends CommandBase {
 	
 	/**
 	 * @author Noah
-	 * Drives forward until less than 2 feet away from an object
+	 * Turns right away from an object
 	 */
 	public void execute() {
 		
-		forwardThrottle = .25;
-		turnThrottle = 0;
+		forwardThrottle = 0;
+		turnThrottle = .5;
 		sixWheelDriveTrain.ArcadeDrive(forwardThrottle, turnThrottle);
 		System.out.println(radar.ReturnDistances());
 		
 	}
 	
 	protected boolean isFinished() {
-		return radar.ReturnDistances() < 3;
+		return radar.ReturnDistances() > 4;
 	}
 	
 	public void end() {

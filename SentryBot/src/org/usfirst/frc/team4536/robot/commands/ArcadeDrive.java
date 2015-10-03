@@ -19,6 +19,10 @@ public class ArcadeDrive extends CommandBase {
 		
 	}
 	
+	/**
+	 * @author Noah
+	 * Drives 6 wheel drive with arcade
+	 */
 	public void execute() {
 		
 		forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
