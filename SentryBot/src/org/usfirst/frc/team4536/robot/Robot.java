@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.*;
-import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -17,14 +16,12 @@ import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 
     Command autonomousCommand;
     Command drive;
     Command strafeDrive;
     Command runRadar;
-    Command arcadeDrive;
     Command driveUntilObject;
     Command roam;
 
@@ -34,13 +31,9 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-        autonomousCommand = new ExampleCommand();
         drive = new Drive();
         strafeDrive = new StrafeDrive();
         runRadar = new Radar();
-        arcadeDrive = new ArcadeDrive();
-        driveUntilObject = new DriveUntilObject();
-        roam = new Roam();
     }
 	
 	public void disabledPeriodic() {
@@ -48,8 +41,7 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+    	if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
@@ -64,8 +56,7 @@ public class Robot extends IterativeRobot {
         
         roam.start();
         
-        //driveUntilObject.start();
-    }
+            }
 
     /**
      * This function is called when the disabled button is hit.
@@ -73,11 +64,7 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
-    	//runRadar.cancel();
-    	
-    	//arcadeDrive.cancel();
-    	
-    	//driveUntilObject.cancel();
+    	runRadar.cancel();
     	
     	roam.cancel();
     	
@@ -89,22 +76,16 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        //if (OI.strafing == true) {
-        	//if (drive != null) drive.cancel();
-        	//strafeDrive.start();
-        //}
-        //else {
-        	//if (strafeDrive != null) strafeDrive.cancel();
-        	//drive.start();
-        //}
-        
-        //arcadeDrive.start();
-        
-        //runRadar.start();
-        
-        if (roam == null) {
-        	roam.start();
+        if (OI.strafing == true) {
+        	if (drive != null) drive.cancel();
+        	strafeDrive.start();
         }
+        else {
+        	if (strafeDrive != null) strafeDrive.cancel();
+        	drive.start();
+        }
+        
+        runRadar.start();
         
     }
     
