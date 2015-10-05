@@ -21,8 +21,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
-    Command drive;
-    Command strafeDrive;
     Command runRadar;
     Command arcadeDrive;
     Command driveUntilObject;
@@ -35,8 +33,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         autonomousCommand = new ExampleCommand();
-        drive = new Drive();
-        strafeDrive = new StrafeDrive();
         runRadar = new Radar();
         arcadeDrive = new ArcadeDrive();
         driveUntilObject = new DriveUntilObject();
@@ -88,15 +84,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
-        //if (OI.strafing == true) {
-        	//if (drive != null) drive.cancel();
-        	//strafeDrive.start();
-        //}
-        //else {
-        	//if (strafeDrive != null) strafeDrive.cancel();
-        	//drive.start();
-        //}
         
         //arcadeDrive.start();
         
