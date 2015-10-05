@@ -59,8 +59,6 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         
         roam.start();
-        
-        //driveUntilObject.start();
     }
 
     /**
@@ -68,12 +66,6 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	
-    	//runRadar.cancel();
-    	
-    	//arcadeDrive.cancel();
-    	
-    	//driveUntilObject.cancel();
     	
     	roam.cancel();
     	
@@ -84,10 +76,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
-        //arcadeDrive.start();
-        
-        //runRadar.start();
         
         if (roam == null) {
         	roam.start();
