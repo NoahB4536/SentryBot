@@ -77,7 +77,11 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        if (roam == null) {
+        boolean doneRoam;
+        
+        doneRoam = roam.isCanceled();
+        
+        if (doneRoam = true) {
         	roam.start();
         }
         

@@ -7,8 +7,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Roam extends CommandGroup {
 	
 	public Roam() {
+		
 		addSequential(new DriveUntilObject());
 		addSequential(new TurnIfBlocked());
+		
 	}
 	
 }
