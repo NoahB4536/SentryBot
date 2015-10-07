@@ -2,7 +2,7 @@ package org.usfirst.frc.team4536.robot.commands;
 
 public class TurnIfBlocked extends CommandBase {
 	
-private static double forwardThrottle, turnThrottle, prevRadar;
+private static double forwardThrottle, turnThrottle;
 boolean turnDirection;
 	
 	public TurnIfBlocked() {
@@ -14,40 +14,46 @@ boolean turnDirection;
 		
 		forwardThrottle = 0;
 		turnThrottle = 0;
-		prevRadar = 0;
 		turnDirection = true;
 		
 	}
 	
 	/**
 	 * @author Noah
-	 * Turns right away from an object
+	 * Turns away from an object
 	 */
 	public void execute() {
 		
-		if (prevRadar > radar.ReturnDistances()) {
-			if (turnDirection = true) {
-				turnDirection = false;
-			}
-			else {
-				turnDirection = true;
-			}
+		if (radar.ReturnRightDistance() > radar.ReturnLeftDistance()) {
+			turnDirection = true;
+		}
+		else if (radar.ReturnLeftDistance() > radar.ReturnRightDistance()) {
+			turnDirection = false;
 		}
 		forwardThrottle = 0;
 		if (turnDirection = true) {
-			turnThrottle = .4;
+			turnThrottle = .35;
 		}
 		else if (turnDirection = false) {
-			turnThrottle = -.4;
+			turnThrottle = -.35;
 		}
 		sixWheelDriveTrain.ArcadeDrive(forwardThrottle, turnThrottle);
-		System.out.println(radar.ReturnDistances());
-		prevRadar = radar.ReturnDistances();
+		System.out.println(radar.ReturnLeftDistance() + " " + radar.ReturnRightDistance());
 		
 	}
 	
 	protected boolean isFinished() {
-		return radar.ReturnDistances() > 4;
+		if (radar.ReturnLeftDistance() > 4) {
+			if (radar.ReturnRightDistance() > 4) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void end() {

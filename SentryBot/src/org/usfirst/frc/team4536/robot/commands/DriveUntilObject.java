@@ -20,19 +20,27 @@ public class DriveUntilObject extends CommandBase {
 	
 	/**
 	 * @author Noah
-	 * Drives forward until less than 2 feet away from an object
+	 * Drives forward until less than 3 feet away from an object
 	 */
 	public void execute() {
 		
 		forwardThrottle = .25;
 		turnThrottle = 0;
 		sixWheelDriveTrain.ArcadeDrive(forwardThrottle, turnThrottle);
-		System.out.println(radar.ReturnDistances());
+		System.out.println(radar.ReturnLeftDistance() + " " + radar.ReturnRightDistance());
 		
 	}
 	
 	protected boolean isFinished() {
-		return radar.ReturnDistances() < 3;
+		if (radar.ReturnLeftDistance() < 3) {
+			return true;
+		}
+		else if (radar.ReturnRightDistance() < 3) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void end() {
