@@ -4,8 +4,7 @@ import org.usfirst.frc.team4536.robot.Constants;
 
 public class TurnIfBlocked extends CommandBase {
 	
-private static double forwardThrottle, turnThrottle;
-boolean turnDirection;
+	private static double turnThrottle;
 	
 	public TurnIfBlocked() {
 		requires(sixWheelDriveTrain);
@@ -14,9 +13,7 @@ boolean turnDirection;
 	
 	public void initialize() {
 		
-		forwardThrottle = 0;
 		turnThrottle = 0;
-		turnDirection = true;
 		
 	}
 	
@@ -27,19 +24,21 @@ boolean turnDirection;
 	public void execute() {
 		
 		if (radar.ReturnRightDistance() > radar.ReturnLeftDistance()) {
-			turnDirection = true;
+			if (radar.ReturnRightDistance() < 2.5) {
+				turnThrottle = -.35;
+			}
+			else {
+			turnThrottle = .35;
+			}
 		}
 		else if (radar.ReturnLeftDistance() > radar.ReturnRightDistance()) {
-			turnDirection = false;
-		}
-		forwardThrottle = 0;
-		if (turnDirection = true) {
-			turnThrottle = .35;
-		}
-		else if (turnDirection = false) {
 			turnThrottle = -.35;
 		}
-		sixWheelDriveTrain.ArcadeDrive(forwardThrottle, turnThrottle);
+		else {
+			turnThrottle = 0;
+		}
+		
+		sixWheelDriveTrain.ArcadeDrive(0, turnThrottle);
 		System.out.println(radar.ReturnLeftDistance() + " " + radar.ReturnRightDistance());
 		
 	}

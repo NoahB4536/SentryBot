@@ -6,8 +6,8 @@ public class Constants {
 	
 	public static final double ANALOG_TO_FEET = 226.5;
 	
-	public static final double TURN_DIST = 1;
+	public static final double TURN_DIST = 2;
 	
-	public static final double DRIVE_DIST = 2;
+	public static final double DRIVE_DIST = 3;
 	
 }

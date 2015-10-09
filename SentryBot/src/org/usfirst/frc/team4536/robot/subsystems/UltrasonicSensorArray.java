@@ -45,7 +45,7 @@ public class UltrasonicSensorArray extends Subsystem {
 		return distance1;
 	}
 	public double ReturnRightDistance() {
-		double distance2 = rangefinder2.getValue() / Constants.ANALOG_TO_FEET;
+		double distance2 = rangefinder2.getValue() / (Constants.ANALOG_TO_FEET * 0.3917);
 		return distance2;
 	}
 	
