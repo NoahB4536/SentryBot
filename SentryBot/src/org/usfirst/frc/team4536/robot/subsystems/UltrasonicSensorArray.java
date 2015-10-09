@@ -39,7 +39,7 @@ public class UltrasonicSensorArray extends Subsystem {
 	}
 	
 	public double ReturnDistances() {
-		double distance1 = rangefinder.getValue() / Constants.ANALOG_TO_FEET;
+		double distance1 = rangefinder.getValue() / (Constants.ANALOG_TO_FEET * 0.3917);
 		return distance1;
 	}
 	
