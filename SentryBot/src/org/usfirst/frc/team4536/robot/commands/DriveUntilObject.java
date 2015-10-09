@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.commands.*;
 
 public class DriveUntilObject extends CommandBase {
@@ -27,15 +28,15 @@ public class DriveUntilObject extends CommandBase {
 		forwardThrottle = .25;
 		turnThrottle = 0;
 		sixWheelDriveTrain.ArcadeDrive(forwardThrottle, turnThrottle);
-		System.out.println(radar.ReturnLeftDistance() + " " + radar.ReturnRightDistance());
+		System.out.println(radar.ReturnLeftDistance() + "          " + radar.ReturnRightDistance());
 		
 	}
 	
 	protected boolean isFinished() {
-		if (radar.ReturnLeftDistance() < 3) {
+		if (radar.ReturnLeftDistance() < Constants.TURN_DIST) {
 			return true;
 		}
-		else if (radar.ReturnRightDistance() < 3) {
+		else if (radar.ReturnRightDistance() < Constants.TURN_DIST) {
 			return true;
 		}
 		else {

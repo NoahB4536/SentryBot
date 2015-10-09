@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
+import org.usfirst.frc.team4536.robot.Constants;
+
 public class TurnIfBlocked extends CommandBase {
 	
 private static double forwardThrottle, turnThrottle;
@@ -43,8 +45,8 @@ boolean turnDirection;
 	}
 	
 	protected boolean isFinished() {
-		if (radar.ReturnLeftDistance() > 4) {
-			if (radar.ReturnRightDistance() > 4) {
+		if (radar.ReturnLeftDistance() > Constants.DRIVE_DIST) {
+			if (radar.ReturnRightDistance() > Constants.DRIVE_DIST) {
 				return true;
 			}
 			else {

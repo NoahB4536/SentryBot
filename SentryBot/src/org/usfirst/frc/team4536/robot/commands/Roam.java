@@ -8,8 +8,11 @@ public class Roam extends CommandGroup {
 	
 	public Roam() {
 		
+		System.out.println("Driving");
 		addSequential(new DriveUntilObject());
+		System.out.println("Turning");
 		addSequential(new TurnIfBlocked());
+		System.out.println("Done");
 		
 	}
 	
