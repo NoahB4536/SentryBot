@@ -31,9 +31,9 @@ public class DriveTrain extends Subsystem {
 	
 	public void Drive(double leftFrontTalonThrottle, double rightFrontTalonThrottle, double leftBackTalonThrottle, double rightBackTalonThrottle) {
 		
-    	leftFrontTalon.set(leftFrontTalonThrottle);
+    	leftFrontTalon.set(-leftFrontTalonThrottle);
     	rightFrontTalon.set(rightFrontTalonThrottle);
-    	leftBackTalon.set(leftBackTalonThrottle);
+    	leftBackTalon.set(-leftBackTalonThrottle);
     	rightBackTalon.set(rightBackTalonThrottle);
     	
 	}

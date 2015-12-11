@@ -20,7 +20,6 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command drive;
-    Command strafeDrive;
     Command runRadar;
     Command driveUntilObject;
     Command roam;
@@ -32,8 +31,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         drive = new Drive();
-        strafeDrive = new StrafeDrive();
-        runRadar = new Radar();
+        //runRadar = new Radar();
     }
 	
 	public void disabledPeriodic() {
@@ -41,7 +39,7 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-    	if (autonomousCommand != null) autonomousCommand.start();
+    	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
@@ -52,11 +50,11 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        //if (autonomousCommand != null) autonomousCommand.cancel();
         
-        roam.start();
+        //roam.start();
         
-            }
+    	}
 
     /**
      * This function is called when the disabled button is hit.
@@ -64,9 +62,11 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
-    	runRadar.cancel();
+    	//runRadar.cancel();
     	
-    	roam.cancel();
+    	//roam.cancel();
+    	
+    	drive.cancel();
     	
     }
 
@@ -76,16 +76,9 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        if (OI.strafing == true) {
-        	if (drive != null) drive.cancel();
-        	strafeDrive.start();
-        }
-        else {
-        	if (strafeDrive != null) strafeDrive.cancel();
-        	drive.start();
-        }
+        drive.start();
         
-        runRadar.start();
+        //runRadar.start();
         
     }
     

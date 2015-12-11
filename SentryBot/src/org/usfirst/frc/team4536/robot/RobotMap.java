@@ -9,11 +9,12 @@ package org.usfirst.frc.team4536.robot;
 public class RobotMap {
 	
 	public static final int LEFT_FRONT_MOTOR = 0;
-    public static final int RIGHT_FRONT_MOTOR = 1;
-    public static final int LEFT_BACK_MOTOR = 2;
-    public static final int RIGHT_BACK_MOTOR = 3;
+    public static final int RIGHT_FRONT_MOTOR = 3;
+    public static final int LEFT_BACK_MOTOR = 1;
+    public static final int RIGHT_BACK_MOTOR = 2;
     
     public static final int MAIN_STICK = 0;
+    public static final int SECONDARY_STICK = 1;
     
     public static final int SERVO_PWN_CHANNEL = 6;
     
