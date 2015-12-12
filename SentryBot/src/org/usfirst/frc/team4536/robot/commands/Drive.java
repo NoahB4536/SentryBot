@@ -32,22 +32,14 @@ public class Drive extends CommandBase {
 	protected void execute() {
 		
 		forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
-    	turnThrottle = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
+		strafeThrottle = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
+		
+    	turnThrottle = Utilities.deadZone(OI.secondaryStick.getX(), Constants.DEAD_ZONE);
     	
-    	//if (forwardThrottle == 0 && turnThrottle == 0) {
-    		strafeThrottle = Utilities.deadZone(OI.secondaryStick.getX(), Constants.DEAD_ZONE);
-    		//leftFrontTalonThrottle = strafeThrottle;
-        	//leftBackTalonThrottle = -strafeThrottle;
-        	//rightFrontTalonThrottle = -strafeThrottle;
-        	//rightBackTalonThrottle = strafeThrottle;
-    	//}
-    	//else {
-    		//strafeThrottle = 0;
-    		leftFrontTalonThrottle = forwardThrottle + turnThrottle + strafeThrottle;
-        	leftBackTalonThrottle = forwardThrottle + turnThrottle - strafeThrottle;
-        	rightFrontTalonThrottle = forwardThrottle - turnThrottle - strafeThrottle;
-        	rightBackTalonThrottle = forwardThrottle - turnThrottle + strafeThrottle;
-    	//}
+    	leftFrontTalonThrottle = forwardThrottle + turnThrottle + strafeThrottle;
+        leftBackTalonThrottle = forwardThrottle + turnThrottle - strafeThrottle;
+        rightFrontTalonThrottle = forwardThrottle - turnThrottle - strafeThrottle;
+        rightBackTalonThrottle = forwardThrottle - turnThrottle + strafeThrottle;
     	
     	driveTrain.Drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
     	

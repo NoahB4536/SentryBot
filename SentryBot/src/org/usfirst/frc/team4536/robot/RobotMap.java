@@ -16,7 +16,8 @@ public class RobotMap {
     public static final int MAIN_STICK = 0;
     public static final int SECONDARY_STICK = 1;
     
-    public static final int SERVO_PWN_CHANNEL = 6;
+    public static final int TOP_SERVO_PWM_CHANNEL = 6;
+    public static final int BOT_SERVO_PWM_CHANNEL = 7;
     
     public static final int ULTRASONIC_IN = 2;
     

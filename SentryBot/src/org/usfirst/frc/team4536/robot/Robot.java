@@ -31,7 +31,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         drive = new Drive();
-        //runRadar = new Radar();
+        runRadar = new Radar();
     }
 	
 	public void disabledPeriodic() {
@@ -50,11 +50,10 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	
         //if (autonomousCommand != null) autonomousCommand.cancel();
         
-        //roam.start();
-        
-    	}
+    }
 
     /**
      * This function is called when the disabled button is hit.
@@ -63,8 +62,6 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
     	
     	//runRadar.cancel();
-    	
-    	//roam.cancel();
     	
     	drive.cancel();
     	
