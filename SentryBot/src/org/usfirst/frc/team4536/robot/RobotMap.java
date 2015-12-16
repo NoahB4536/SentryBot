@@ -21,4 +21,6 @@ public class RobotMap {
     
     public static final int ULTRASONIC_IN = 2;
     
+    public static final int GYRO_CHANNEL = 1;
+    
 }

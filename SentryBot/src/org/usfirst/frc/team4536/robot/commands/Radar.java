@@ -2,13 +2,12 @@ package org.usfirst.frc.team4536.robot.commands;
 
 public class Radar extends CommandBase {
 	
-	int botVal;
-	int topVal;
-	int prevTopVal;
+	double botVal;
+	double topVal;
 	
 	double dist;
 	
-	boolean goingRight;
+	boolean positive;
 	
 	public Radar() {
 		requires(radar);
@@ -17,41 +16,30 @@ public class Radar extends CommandBase {
 	public void initialize() {
 		topVal = 90;
 		botVal = 90;
+		radar.RunScan(topVal, botVal);
+		positive = true;
 	}
 	
 	public void execute() {
 		
-		if (topVal <= 180 && topVal > prevTopVal) {
-			prevTopVal = topVal;
+		if (positive == true) {
 			topVal = topVal + 1;
 			botVal = botVal + 1;
 			dist = radar.RunScan(topVal, botVal);
 			System.out.println(dist);
+			if (topVal == 180) {
+				positive = false;
+			}
 		}
-		else if (topVal > prevTopVal) {
-			prevTopVal = topVal;
+		else if (positive == false) {
 			topVal = topVal - 1;
 			botVal = botVal - 1;
 			dist = radar.RunScan(topVal, botVal);
 			System.out.println(dist);
+			if (topVal == 0) {
+				positive = true;
+			}
 		}
-		if (topVal >= 0 && topVal < prevTopVal) {
-			prevTopVal = topVal;
-			topVal = topVal - 1;
-			botVal = botVal - 1;
-			dist = radar.RunScan(topVal, botVal);
-			System.out.println(dist);
-		}
-		else if (topVal < prevTopVal) {
-			prevTopVal = topVal;
-			topVal = topVal + 1;
-			botVal = botVal + 1;
-			dist = radar.RunScan(topVal, botVal);
-			System.out.println(dist);
-		}
-		
-		System.out.println(radar.ReturnDistance());
-		
 	}
 	
 	protected void interrupted() {

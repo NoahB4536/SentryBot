@@ -23,6 +23,7 @@ public class Robot extends IterativeRobot {
     Command runRadar;
     Command driveUntilObject;
     Command roam;
+    Command runGyro;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         drive = new Drive();
         runRadar = new Radar();
+        runGyro = new RunGyro();
     }
 	
 	public void disabledPeriodic() {
@@ -61,9 +63,11 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
+    	drive.cancel();
+    	
     	//runRadar.cancel();
     	
-    	drive.cancel();
+    	runGyro.cancel();
     	
     }
 
@@ -76,6 +80,8 @@ public class Robot extends IterativeRobot {
         drive.start();
         
         //runRadar.start();
+        
+        runGyro.start();
         
     }
     

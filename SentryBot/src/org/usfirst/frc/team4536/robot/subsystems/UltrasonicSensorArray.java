@@ -17,7 +17,7 @@ public class UltrasonicSensorArray extends Subsystem {
 	public UltrasonicSensorArray(int analogIn, int servoBotChannel, int servoTopChannel) {
 		
 		rangefinder = new AnalogInput(analogIn);
-		botServo = new Servo(servoBotChannel);
+		topServo = new Servo(servoBotChannel);
 		botServo = new Servo(servoTopChannel);
 		
 	}
@@ -26,9 +26,11 @@ public class UltrasonicSensorArray extends Subsystem {
 		
 	}
 	
-	public double RunScan(int topPos, int botPos) {
-		topServo.setPosition(topPos / 180);
-		botServo.setPosition(botPos / 180);
+	public double RunScan(double topPos, double botPos) {
+		topPos = topPos / 180;
+		botPos = botPos / 180;
+		topServo.setPosition(topPos);
+		botServo.setPosition(botPos);
 		scanDist = ReturnDistance();
 		return scanDist;
 	}
