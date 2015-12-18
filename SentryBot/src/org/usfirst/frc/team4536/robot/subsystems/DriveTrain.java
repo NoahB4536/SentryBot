@@ -29,7 +29,7 @@ public class DriveTrain extends Subsystem {
 		
 	}
 	
-	public void Drive(double leftFrontTalonThrottle, double rightFrontTalonThrottle, double leftBackTalonThrottle, double rightBackTalonThrottle) {
+	public void drive (double leftFrontTalonThrottle, double rightFrontTalonThrottle, double leftBackTalonThrottle, double rightBackTalonThrottle) {
 		
     	leftFrontTalon.set(-leftFrontTalonThrottle);
     	rightFrontTalon.set(rightFrontTalonThrottle);

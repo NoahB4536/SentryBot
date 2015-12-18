@@ -41,7 +41,7 @@ public class Drive extends CommandBase {
         rightFrontTalonThrottle = forwardThrottle - turnThrottle - strafeThrottle;
         rightBackTalonThrottle = forwardThrottle - turnThrottle + strafeThrottle;
     	
-    	driveTrain.Drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
+    	driveTrain.drive(leftFrontTalonThrottle, rightFrontTalonThrottle, leftBackTalonThrottle, rightBackTalonThrottle);
     	
 	}
 	

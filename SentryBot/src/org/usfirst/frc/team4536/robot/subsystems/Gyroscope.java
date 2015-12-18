@@ -21,10 +21,10 @@ public class Gyroscope extends Subsystem {
 	
 	public double getAngle() {
 		angle = gyro.getAngle();
-		if (angle > 180) {
+		while (angle > 180) {
 			angle = angle - 360;
 		}
-		if (angle < -180) {
+		while (angle < -180) {
 			angle = angle + 360;
 		}
 		return angle;

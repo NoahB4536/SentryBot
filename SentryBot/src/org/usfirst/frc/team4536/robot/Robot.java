@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.*;
+import org.usfirst.frc.team4536.robot.OI;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,8 @@ public class Robot extends IterativeRobot {
     Command driveUntilObject;
     Command roam;
     Command runGyro;
+    Command testUltra;
+    Command autoAvoidance;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,6 +37,8 @@ public class Robot extends IterativeRobot {
         drive = new Drive();
         runRadar = new Radar();
         runGyro = new RunGyro();
+        testUltra = new TestUltra();
+        autoAvoidance = new AutoAvoidance();
     }
 	
 	public void disabledPeriodic() {
@@ -54,6 +59,8 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	
         //if (autonomousCommand != null) autonomousCommand.cancel();
+    	
+    	
         
     }
 
@@ -63,11 +70,15 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
-    	drive.cancel();
+    	//drive.cancel();
     	
     	//runRadar.cancel();
     	
-    	runGyro.cancel();
+    	//runGyro.cancel();
+    	
+    	//testUltra.cancel();
+    	
+    	autoAvoidance.cancel();
     	
     }
 
@@ -77,11 +88,15 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        drive.start();
+        //drive.start();
         
         //runRadar.start();
         
-        runGyro.start();
+        //runGyro.start();
+        
+        //testUltra.start();
+        
+        autoAvoidance.start();
         
     }
     
