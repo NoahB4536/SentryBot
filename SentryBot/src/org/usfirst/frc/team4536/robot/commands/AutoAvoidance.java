@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot.commands;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
+import edu.wpi.first.wpilibj.Timer;
 
 public class AutoAvoidance extends CommandBase {
 	
@@ -24,9 +25,11 @@ public class AutoAvoidance extends CommandBase {
 	double angleBase;
 	double angleFinal;
 	
+	Timer timer;
+	
 	public AutoAvoidance() {
-		requires(gyro);
-		requires(gyro2);
+		requires(gyroBot);
+		requires(gyroTop);
 		requires(driveTrain);
 		requires(radar);
 	}
@@ -35,19 +38,24 @@ public class AutoAvoidance extends CommandBase {
 		topVal = 90;
 		botVal = 90;
 		radar.RunScan(topVal, botVal);
-		gyro.reset();
-		gyro2.reset();
 		positive = true;
 		forwardThrottle = 0;
 		strafeThrottle = 0;
 		turnThrottle = 0;
+		timer = new Timer();
+		timer.start();
+		while (timer.get() < .5) {
+		}
+		gyroBot.reset();
+		gyroTop.reset();
 	}
 	
 	public void execute() {
-		angleBase = gyro.getAngle();
+		angleTop = gyroTop.getAngle();
 		//System.out.println(angleBase);
-		angleBase = gyro.getAngle();
+		angleBase = gyroBot.getAngle();
 		//System.out.println(angleBase2);
+		
 		if (angleBase < 0) {
 			angleBase = angleBase * -1;
 		}
@@ -61,8 +69,8 @@ public class AutoAvoidance extends CommandBase {
 		System.out.println(angleFinal);
 		
 		if (positive == true) {
-			topVal = topVal + 1;
-			botVal = botVal + 1;
+			topVal = topVal + 2;
+			botVal = botVal + 2;
 			dist = radar.RunScan(topVal, botVal);
 			System.out.println("      " + dist);
 			if (topVal == 180) {
@@ -70,8 +78,8 @@ public class AutoAvoidance extends CommandBase {
 			}
 		}
 		else if (positive == false) {
-			topVal = topVal - 1;
-			botVal = botVal - 1;
+			topVal = topVal - 2;
+			botVal = botVal - 2;
 			dist = radar.RunScan(topVal, botVal);
 			System.out.println("      " + dist);
 			if (topVal == 0) {
@@ -202,8 +210,6 @@ public class AutoAvoidance extends CommandBase {
     }
 	
 	protected void interrupted() {
-		System.out.println("interrupted");
-		radar.RunScan(90, 90);
 		end();
     }
 	

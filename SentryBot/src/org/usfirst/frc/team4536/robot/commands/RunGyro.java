@@ -5,15 +5,15 @@ public class RunGyro extends CommandBase {
 	double angle;
 	
 	public RunGyro() {
-		requires(gyro);
+		requires(gyroBot);
 	}
 	
 	public void initialize() {
-		gyro.reset();
+		gyroBot.reset();
 	}
 	
 	public void execute() {
-		angle = gyro.getAngle();
+		angle = gyroBot.getAngle();
 		System.out.println(angle);
 	}
 	

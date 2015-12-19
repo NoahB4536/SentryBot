@@ -21,8 +21,8 @@ public class RobotMap {
     
     public static final int ULTRASONIC_IN = 2;
     
-    public static final int GYRO_CHANNEL = 1;
-    public static final int GYRO_CHANNEL_2 = 0;
+    public static final int GYRO_CHANNEL_TOP = 1;
+    public static final int GYRO_CHANNEL_BOT = 0;
     
     public static final int RESET_GIMBLE = 3;
     

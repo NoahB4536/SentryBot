@@ -8,8 +8,8 @@ public abstract class CommandBase extends Command{
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FRONT_MOTOR, RobotMap.RIGHT_FRONT_MOTOR, RobotMap.LEFT_BACK_MOTOR, RobotMap.RIGHT_BACK_MOTOR);
 	public static UltrasonicSensorArray radar = new UltrasonicSensorArray(RobotMap.ULTRASONIC_IN, RobotMap.TOP_SERVO_PWM_CHANNEL, RobotMap.BOT_SERVO_PWM_CHANNEL);
-	public static Gyroscope gyro = new Gyroscope(RobotMap.GYRO_CHANNEL);
-	public static Gyroscope gyro2 = new Gyroscope(RobotMap.GYRO_CHANNEL_2);
+	public static Gyroscope gyroBot = new Gyroscope(RobotMap.GYRO_CHANNEL_BOT);
+	public static Gyroscope gyroTop = new Gyroscope(RobotMap.GYRO_CHANNEL_TOP);
 	
 	public CommandBase() {
     }

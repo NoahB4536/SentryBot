@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.OI;
 
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
     Command runGyro;
     Command testUltra;
     Command autoAvoidance;
+    Command setGimble;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,6 +41,7 @@ public class Robot extends IterativeRobot {
         runGyro = new RunGyro();
         testUltra = new TestUltra();
         autoAvoidance = new AutoAvoidance();
+        setGimble = new SetGimble();
     }
 	
 	public void disabledPeriodic() {
@@ -79,6 +82,8 @@ public class Robot extends IterativeRobot {
     	//testUltra.cancel();
     	
     	autoAvoidance.cancel();
+    	
+    	setGimble.start();
     	
     }
 
