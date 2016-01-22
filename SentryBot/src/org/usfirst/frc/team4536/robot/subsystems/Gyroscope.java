@@ -2,17 +2,17 @@ package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Gyroscope extends Subsystem {
 	
-	Gyro gyro;
+	AnalogGyro gyro;
 	
 	double angle;
 	
 	public Gyroscope(int channel) {
-		gyro = new Gyro(channel);
+		gyro = new AnalogGyro(channel);
 	}
 	
 	public void initDefaultCommand() {

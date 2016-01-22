@@ -29,7 +29,8 @@ public class Robot extends IterativeRobot {
     Command testUltra;
     Command autoAvoidance;
     Command setGimble;
-
+    Command runCamera;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -42,6 +43,7 @@ public class Robot extends IterativeRobot {
         testUltra = new TestUltra();
         autoAvoidance = new AutoAvoidance();
         setGimble = new SetGimble();
+        runCamera = new StartCamera();
     }
 	
 	public void disabledPeriodic() {
@@ -63,7 +65,7 @@ public class Robot extends IterativeRobot {
     	
         //if (autonomousCommand != null) autonomousCommand.cancel();
     	
-    	
+    	runCamera.start();
         
     }
 
@@ -73,7 +75,7 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
-    	//drive.cancel();
+    	drive.cancel();
     	
     	//runRadar.cancel();
     	
@@ -81,9 +83,11 @@ public class Robot extends IterativeRobot {
     	
     	//testUltra.cancel();
     	
-    	autoAvoidance.cancel();
+    	//autoAvoidance.cancel();
     	
-    	setGimble.start();
+    	//setGimble.start();
+    	
+    	runCamera.cancel();
     	
     }
 
@@ -93,7 +97,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        //drive.start();
+        drive.start();
         
         //runRadar.start();
         
@@ -101,7 +105,7 @@ public class Robot extends IterativeRobot {
         
         //testUltra.start();
         
-        autoAvoidance.start();
+        //autoAvoidance.start();
         
     }
     
