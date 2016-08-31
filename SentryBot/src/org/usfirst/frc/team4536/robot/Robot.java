@@ -22,14 +22,6 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command drive;
-    Command runRadar;
-    Command driveUntilObject;
-    Command roam;
-    Command runGyro;
-    Command testUltra;
-    Command autoAvoidance;
-    Command setGimble;
-    Command runCamera;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -38,12 +30,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         drive = new Drive();
-        runRadar = new Radar();
-        runGyro = new RunGyro();
-        testUltra = new TestUltra();
-        autoAvoidance = new AutoAvoidance();
-        setGimble = new SetGimble();
-        runCamera = new StartCamera();
     }
 	
 	public void disabledPeriodic() {
@@ -64,8 +50,6 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	
         //if (autonomousCommand != null) autonomousCommand.cancel();
-    	
-    	runCamera.start();
         
     }
 
@@ -77,18 +61,6 @@ public class Robot extends IterativeRobot {
     	
     	drive.cancel();
     	
-    	//runRadar.cancel();
-    	
-    	//runGyro.cancel();
-    	
-    	//testUltra.cancel();
-    	
-    	//autoAvoidance.cancel();
-    	
-    	//setGimble.start();
-    	
-    	runCamera.cancel();
-    	
     }
 
     /**
@@ -98,14 +70,6 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         drive.start();
-        
-        //runRadar.start();
-        
-        //runGyro.start();
-        
-        //testUltra.start();
-        
-        //autoAvoidance.start();
         
     }
     

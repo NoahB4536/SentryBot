@@ -16,17 +16,11 @@ public class OI {
 	
 	public static Joystick secondaryStick;
 	
-	public static Button resetGimble;
-	
 	public OI() {
 		
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
-		
-		resetGimble = new JoystickButton(mainStick, RobotMap.RESET_GIMBLE);
-		
-		resetGimble.whenPressed(new SetGimble());
 		
 	}
 	
