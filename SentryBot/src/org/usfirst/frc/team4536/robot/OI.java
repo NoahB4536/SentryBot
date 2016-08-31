@@ -16,11 +16,17 @@ public class OI {
 	
 	public static Joystick secondaryStick;
 	
+	public static Button slowMode;
+	
 	public OI() {
 		
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+		
+		slowMode = new JoystickButton(mainStick, 2);
+		
+		slowMode.whileHeld(new SlowMode());
 		
 	}
 	

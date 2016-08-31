@@ -4,7 +4,7 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Utilities;
 
-public class Drive extends CommandBase {
+public class SlowMode extends CommandBase {
 	
 	private static double forwardThrottle, strafeThrottle, turnThrottle;
 	
@@ -13,7 +13,7 @@ public class Drive extends CommandBase {
 	double rightFrontTalonThrottle;
 	double rightBackTalonThrottle;
 	
-	public Drive() {
+	public SlowMode() {
 		requires(driveTrain);
 	}
 	
@@ -25,16 +25,16 @@ public class Drive extends CommandBase {
 		
 	}
 	
-	/**
-	 * @author Noah
-	 * 
-	 */
-	protected void execute() {
+protected void execute() {
 		
 		forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
 		strafeThrottle = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
 		
     	turnThrottle = Utilities.deadZone(OI.secondaryStick.getX(), Constants.DEAD_ZONE);
+    	
+    	forwardThrottle *= .5;
+    	strafeThrottle *= .5;
+    	turnThrottle *= .5;
     	
     	leftFrontTalonThrottle = forwardThrottle + turnThrottle + strafeThrottle;
         leftBackTalonThrottle = forwardThrottle + turnThrottle - strafeThrottle;
@@ -52,4 +52,5 @@ public class Drive extends CommandBase {
 	protected void end() {
 		
 	}
+	
 }
