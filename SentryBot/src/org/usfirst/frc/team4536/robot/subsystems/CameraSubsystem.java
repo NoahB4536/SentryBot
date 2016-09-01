@@ -16,6 +16,8 @@ public class CameraSubsystem extends Subsystem{
 	}
 	
 	public void startCamera() {
+		cam = CameraServer.getInstance();
+		cam.setQuality(50);
 		cam.startAutomaticCapture("cam0");
 	}
 	
