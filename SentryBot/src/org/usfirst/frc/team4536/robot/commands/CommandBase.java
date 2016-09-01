@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public abstract class CommandBase extends Command{
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_FRONT_MOTOR, RobotMap.RIGHT_FRONT_MOTOR, RobotMap.LEFT_BACK_MOTOR, RobotMap.RIGHT_BACK_MOTOR);
+	public static CameraSubsystem camera = new CameraSubsystem();
 	
 	public CommandBase() {
     }

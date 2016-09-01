@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command drive;
+    Command cam;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         drive = new Drive();
+        cam = new StartCam();
     }
 	
 	public void disabledPeriodic() {
@@ -39,7 +41,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
-
+    
     /**
      * This function is called periodically during autonomous
      */
@@ -50,7 +52,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	
         //if (autonomousCommand != null) autonomousCommand.cancel();
-        
+        cam.start();
     }
 
     /**
