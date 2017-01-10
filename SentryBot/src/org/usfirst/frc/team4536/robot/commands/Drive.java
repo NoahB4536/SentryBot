@@ -36,6 +36,10 @@ public class Drive extends CommandBase {
 		
     	turnThrottle = Utilities.deadZone(OI.secondaryStick.getX(), Constants.DEAD_ZONE);
     	
+    	forwardThrottle *= .5;
+    	strafeThrottle *= .5;
+    	turnThrottle *= .5;
+    	
     	leftFrontTalonThrottle = forwardThrottle + turnThrottle + strafeThrottle;
         leftBackTalonThrottle = forwardThrottle + turnThrottle - strafeThrottle;
         rightFrontTalonThrottle = forwardThrottle - turnThrottle - strafeThrottle;
